@@ -431,6 +431,11 @@ class PetWindow(QWidget):
     def _on_menu_action_clicked(self, action_id: str, button: QPushButton) -> None:
         self._play_click_animation(button)
         self.quick_action_requested.emit(action_id)
+        self._close_menu()
+
+    def _close_menu(self) -> None:
+        if hasattr(self, '_menu_position_timer'):
+            self._menu_position_timer.stop()
         self.context_menu.hide()
 
     def _play_click_animation(self, button: QPushButton) -> None:
@@ -484,6 +489,30 @@ class PetWindow(QWidget):
 
     def _show_context_menu(self, global_pos: QPoint) -> None:
         self.context_menu.move(global_pos)
-        self.context_menu.resize(400, 400)
+        self.context_menu.resize(400, 450)
         self.context_menu.show()
         self.context_menu.raise_()
+        
+        self._menu_position_timer = QTimer(self)
+        self._menu_position_timer.setSingleShot(True)
+        self._menu_position_timer.timeout.connect(self._update_menu_position)
+        self._menu_position_timer.start(50)
+
+    def _update_menu_position(self) -> None:
+        if self.context_menu.isVisible():
+            pet_center = self.mapToGlobal(self.rect().center())
+            menu_x = pet_center.x() - 200
+            menu_y = pet_center.y() - 225
+            
+            if menu_x < 0:
+                menu_x = 10
+            elif menu_x + 400 > QApplication.primaryScreen().geometry().width():
+                menu_x = QApplication.primaryScreen().geometry().width() - 410
+            
+            if menu_y < 0:
+                menu_y = 10
+            elif menu_y + 450 > QApplication.primaryScreen().geometry().height():
+                menu_y = QApplication.primaryScreen().geometry().height() - 460
+            
+            self.context_menu.move(menu_x, menu_y)
+            self._menu_position_timer.start(50)

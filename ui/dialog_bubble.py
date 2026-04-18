@@ -42,10 +42,10 @@ class DialogBubble(QWidget):
         self.label.setText(text)
         self.label.adjustSize()
 
-        width = max(160, min(300, self.label.sizeHint().width() + 32))
-        height = max(50, self.label.sizeHint().height() + 24)
+        width = max(200, min(400, self.label.sizeHint().width() + 48))
+        height = max(80, self.label.sizeHint().height() + 36)
         self.resize(width, height)
-        self.label.setGeometry(16, 12, width - 32, height - 24)
+        self.label.setGeometry(20, 16, width - 40, height - 32)
 
         x = anchor_rect.center().x() - width // 2
         y = anchor_rect.top() - height - 14
