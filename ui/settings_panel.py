@@ -35,55 +35,49 @@ class SettingsWindow(QDialog):
         self.setStyleSheet(
             f"""
             QDialog {{
-                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                    stop:0 #FFF9FB,
-                    stop:1 #FFF5F7);
+                background: transparent;
                 font-family: {ui_font_stack(include_emoji=True)};
-                border-radius: 16px;
             }}
             QListWidget {{
-                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                    stop:0 #FFFFFF,
-                    stop:1 #FFFBFD);
-                border: 2px solid #FFE4E1;
-                border-radius: 16px;
+                background: transparent;
+                border: none;
                 outline: 0;
-                padding: 10px;
+                padding: 12px;
             }}
             QListWidget::item {{
-                height: 52px;
-                border-radius: 10px;
-                margin: 4px 6px;
-                padding-left: 14px;
+                height: 60px;
+                border-radius: 12px;
+                margin: 6px 8px;
+                padding-left: 16px;
                 color: #5A5A5A;
-                font-size: 15px;
+                font-size: 18px;
             }}
             QListWidget::item:selected {{
                 background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
                     stop: 0 #FF9A9E, stop: 1 #FECFEF);
                 color: white;
                 font-weight: bold;
-                border: 1px solid #FF8EAF;
+                border: none;
             }}
             QListWidget::item:hover {{
-                background: rgba(255, 240, 245, 150);
+                background: rgba(255, 240, 245, 180);
             }}
             QStackedWidget {{
                 background-color: transparent;
             }}
             QLabel {{
                 color: #5A5A5A;
-                font-size: 14px;
+                font-size: 16px;
                 font-weight: 500;
             }}
             QSpinBox {{
                 border: 2px solid #FFE4E1;
-                border-radius: 8px;
-                padding: 8px 12px;
+                border-radius: 10px;
+                padding: 10px 14px;
                 background: white;
                 color: #5A5A5A;
-                font-size: 14px;
-                min-height: 28px;
+                font-size: 16px;
+                min-height: 32px;
             }}
             QSpinBox:focus {{
                 border: 2px solid #FF9A9E;
@@ -91,14 +85,14 @@ class SettingsWindow(QDialog):
             }}
             QCheckBox {{
                 color: #5A5A5A;
-                font-size: 14px;
-                spacing: 10px;
+                font-size: 16px;
+                spacing: 12px;
             }}
             QCheckBox::indicator {{
-                width: 20px;
-                height: 20px;
+                width: 22px;
+                height: 22px;
                 border: 2px solid #FFE4E1;
-                border-radius: 4px;
+                border-radius: 5px;
                 background: white;
             }}
             QCheckBox::indicator:checked {{
@@ -111,11 +105,11 @@ class SettingsWindow(QDialog):
                     stop:1 #FF9A9E);
                 color: white;
                 border: none;
-                padding: 12px 24px;
-                border-radius: 10px;
+                padding: 14px 28px;
+                border-radius: 12px;
                 font-weight: bold;
-                font-size: 14px;
-                min-height: 40px;
+                font-size: 16px;
+                min-height: 48px;
             }}
             QPushButton:hover {{
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,

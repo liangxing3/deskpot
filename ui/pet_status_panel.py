@@ -30,32 +30,26 @@ class PetStatusPanel(QDialog):
         self.setStyleSheet(
             f"""
             QDialog {{
-                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                    stop:0 #FFF9FB,
-                    stop:1 #FFF5F7);
+                background: transparent;
                 font-family: {ui_font_stack(include_emoji=True)};
-                border-radius: 16px;
             }}
             QGroupBox {{
-                border: 2px solid #FFE4E1;
-                border-radius: 16px;
-                margin-top: 18px;
-                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                    stop:0 #FFFFFF,
-                    stop:1 #FFFBFD);
+                border: none;
+                margin-top: 20px;
+                background: transparent;
                 font-weight: bold;
                 color: #FF6B9D;
-                font-size: 16px;
+                font-size: 18px;
             }}
             QGroupBox::title {{
                 subcontrol-origin: margin;
-                left: 18px;
+                left: 0px;
                 padding: 0 8px;
                 background: transparent;
             }}
             QLabel {{
                 color: #666666;
-                font-size: 15px;
+                font-size: 17px;
                 font-weight: 500;
             }}
             QPushButton {{
@@ -64,11 +58,11 @@ class PetStatusPanel(QDialog):
                     stop:1 #FF8EAF);
                 color: white;
                 border-radius: 12px;
-                padding: 16px 18px;
-                font-size: 15px;
+                padding: 18px 20px;
+                font-size: 17px;
                 font-weight: bold;
                 border: none;
-                min-height: 50px;
+                min-height: 55px;
             }}
             QPushButton:hover {{
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
@@ -77,7 +71,7 @@ class PetStatusPanel(QDialog):
             }}
             QPushButton:pressed {{
                 background: #FF9A9E;
-                padding-top: 18px;
+                padding-top: 20px;
                 padding-bottom: 14px;
             }}
             QProgressBar {{

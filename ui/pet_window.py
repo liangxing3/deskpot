@@ -6,10 +6,13 @@ from PySide6.QtCore import QEasingCurve, QPoint, QPropertyAnimation, QRect, QSiz
 from PySide6.QtGui import QColor, QMouseEvent, QMovie, QPainter, QPixmap
 from PySide6.QtWidgets import (
     QApplication,
+    QDialog,
+    QGraphicsOpacityEffect,
     QHBoxLayout,
     QLabel,
     QMenu,
     QProgressBar,
+    QPushButton,
     QVBoxLayout,
     QWidget,
 )
@@ -355,46 +358,49 @@ class PetWindow(QWidget):
         return bar
 
     def _build_context_menu(self) -> None:
-        self.context_menu = QMenu(self)
-        self.context_menu.setWindowFlags(self.context_menu.windowFlags() | Qt.NoDropShadowWindowHint)
+        self.context_menu = QDialog(self)
+        self.context_menu.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.Tool)
+        self.context_menu.setAttribute(Qt.WA_TranslucentBackground, True)
         self.context_menu.setStyleSheet(
             f"""
-            QMenu {{
+            QDialog {{
+                background: transparent;
+            }}
+            QPushButton {{
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
                     stop:0 rgba(255, 255, 255, 255),
                     stop:1 rgba(255, 253, 255, 255));
                 border: 1px solid #FFCFDF;
-                padding: 14px;
-                border-radius: 14px;
-                font-family: {ui_font_stack(include_emoji=True)};
-            }}
-            QMenu::item {{
-                padding: 14px 32px;
-                border-radius: 10px;
+                border-radius: 12px;
                 color: #5A5A5A;
-                font-size: 18px;
-                margin: 5px 0px;
+                font-size: 20px;
                 font-weight: 500;
-                min-width: 140px;
+                padding: 16px 20px;
+                min-width: 120px;
+                min-height: 60px;
             }}
-            QMenu::item:selected {{
+            QPushButton:hover {{
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
                     stop:0 #FFF0F5,
                     stop:1 #FFE8EC);
                 color: #FF6B9D;
                 font-weight: 600;
-                border: 1px solid #FFCFDF;
+                border: 2px solid #FFCFDF;
             }}
-            QMenu::separator {{
-                height: 1px;
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 transparent,
-                    stop:0.5 #FFE4E1,
-                    stop:1 transparent);
-                margin: 12px 18px;
+            QPushButton:pressed {{
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FFE8EC,
+                    stop:1 #FFD6E0);
+                color: #FF6B9D;
+                font-weight: 700;
+                padding: 17px 19px;
             }}
             """
         )
+
+        menu_layout = QVBoxLayout(self.context_menu)
+        menu_layout.setContentsMargins(0, 0, 0, 0)
+        menu_layout.setSpacing(0)
 
         grouped_actions = (
             (("feed", "🍖"), ("play", "🧶"), ("clean", "🛁")),
@@ -402,40 +408,82 @@ class PetWindow(QWidget):
             (("exercise", "🏃"), ("charge", "🔋"), ("baji", "💗")),
             (("feather_ball", "🪀"), ("appear", "🎲"), ("walkdog", "🦮")),
         )
+
         for group_index, action_group in enumerate(grouped_actions):
-            if group_index:
-                self.context_menu.addSeparator()
+            row_layout = QHBoxLayout()
+            row_layout.setSpacing(8)
+            row_layout.setContentsMargins(8, 8, 8, 8)
+            
             for action_id, prefix in action_group:
                 spec = MANUAL_ACTION_SPECS[action_id]
-                self.context_menu.addAction(f"{prefix} {spec.label}").triggered.connect(
-                    lambda checked=False, current_action_id=action_id: self.quick_action_requested.emit(
-                        current_action_id
+                button = QPushButton(f"{prefix} {spec.label}")
+                button.clicked.connect(
+                    lambda checked=False, current_action_id=action_id: self._on_menu_action_clicked(
+                        current_action_id, button
                     )
                 )
+                row_layout.addWidget(button, 1)
+            
+            menu_layout.addLayout(row_layout)
 
-        self.context_menu.addSeparator()
-        self.context_menu.addAction("🐾 宠物状态").triggered.connect(
-            lambda: self.quick_action_requested.emit("status")
+        self.context_menu.hide()
+
+    def _on_menu_action_clicked(self, action_id: str, button: QPushButton) -> None:
+        self._play_click_animation(button)
+        self.quick_action_requested.emit(action_id)
+        self.context_menu.hide()
+
+    def _play_click_animation(self, button: QPushButton) -> None:
+        opacity_effect = QGraphicsOpacityEffect(button)
+        button.setGraphicsEffect(opacity_effect)
+        
+        opacity_anim = QPropertyAnimation(opacity_effect, b"opacity")
+        opacity_anim.setDuration(100)
+        opacity_anim.setStartValue(1.0)
+        opacity_anim.setEndValue(0.5)
+        opacity_anim.setEasingCurve(QEasingCurve.InOutQuad)
+        
+        opacity_anim2 = QPropertyAnimation(opacity_effect, b"opacity")
+        opacity_anim2.setDuration(100)
+        opacity_anim2.setStartValue(0.5)
+        opacity_anim2.setEndValue(1.0)
+        opacity_anim2.setEasingCurve(QEasingCurve.InOutQuad)
+        
+        opacity_anim.finished.connect(lambda: opacity_anim2.start())
+        opacity_anim.start()
+
+        separator = QWidget(self.context_menu)
+        separator.setFixedHeight(1)
+        separator.setStyleSheet("background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 transparent, stop:0.5 #FFE4E1, stop:1 transparent);")
+        menu_layout.addWidget(separator)
+
+        bottom_actions = (
+            ("status", "🐾 宠物状态"),
+            ("answerbook", "📖 答案之书"),
+            ("weather", "⛅ 立即查看天气"),
+            ("settings", "⚙️ 系统设置"),
+            ("pause", "⏸️ 暂停提醒 1 小时"),
+            ("reset", "🔄 重置位置"),
+            ("exit", "❌ 退出程序"),
         )
-        self.context_menu.addAction("📖 答案之书").triggered.connect(
-            lambda: self.quick_action_requested.emit("answerbook")
-        )
-        self.context_menu.addAction("⛅ 立即查看天气").triggered.connect(
-            lambda: self.quick_action_requested.emit("weather")
-        )
-        self.context_menu.addAction("⚙️ 系统设置").triggered.connect(
-            lambda: self.quick_action_requested.emit("settings")
-        )
-        self.context_menu.addAction("⏸️ 暂停提醒 1 小时").triggered.connect(
-            lambda: self.quick_action_requested.emit("pause")
-        )
-        self.context_menu.addAction("🔄 重置位置").triggered.connect(
-            lambda: self.quick_action_requested.emit("reset")
-        )
-        self.context_menu.addSeparator()
-        self.context_menu.addAction("❌ 退出程序").triggered.connect(
-            lambda: self.quick_action_requested.emit("exit")
-        )
+
+        bottom_layout = QHBoxLayout()
+        bottom_layout.setSpacing(8)
+        bottom_layout.setContentsMargins(8, 8, 8, 8)
+
+        for action_id, label in bottom_actions:
+            button = QPushButton(label)
+            button.clicked.connect(
+                lambda checked=False, current_action_id=action_id, btn=button: self._on_menu_action_clicked(
+                    current_action_id, btn
+                )
+            )
+            bottom_layout.addWidget(button, 1)
+
+        menu_layout.addLayout(bottom_layout)
 
     def _show_context_menu(self, global_pos: QPoint) -> None:
-        self.context_menu.exec(global_pos)
+        self.context_menu.move(global_pos)
+        self.context_menu.resize(400, 400)
+        self.context_menu.show()
+        self.context_menu.raise_()

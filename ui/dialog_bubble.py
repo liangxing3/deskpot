@@ -19,9 +19,9 @@ class DialogBubble(QWidget):
         self.label.setWordWrap(True)
         self.label.setAlignment(Qt.AlignCenter)
         self.label.setStyleSheet(
-            f"color: #5A5A5A; line-height: 140%; font-family: {ui_font_stack(include_emoji=True)};"
+            f"color: #5A5A5A; line-height: 150%; font-family: {ui_font_stack(include_emoji=True)};"
         )
-        self.label.setFont(build_ui_font(16, include_emoji=True))
+        self.label.setFont(build_ui_font(18, include_emoji=True))
 
         self._hide_timer = QTimer(self)
         self._hide_timer.setSingleShot(True)
