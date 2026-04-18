@@ -1,0 +1,386 @@
+﻿{
+  "animations": [
+    {
+      "id": "idle_001",
+      "state": "IDLE",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\001-线条小狗动态表情包.gif",
+      "weight": 4,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "idle_020",
+      "state": "IDLE",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\020-线条小狗动态表情包.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_normal_001",
+      "emotion_state": "NORMAL",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\001-线条小狗动态表情包.gif",
+      "weight": 4,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_normal_020",
+      "emotion_state": "NORMAL",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\020-线条小狗动态表情包.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_normal_036",
+      "emotion_state": "NORMAL",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\036-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 4500
+    },
+    {
+      "id": "emotion_working_060",
+      "emotion_state": "WORKING",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\060-线条小狗动态表情包.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_working_071",
+      "emotion_state": "WORKING",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\071-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_low_energy_084",
+      "emotion_state": "LOW_ENERGY",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\084-线条小狗动态表情包.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_tired_084",
+      "emotion_state": "TIRED",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\084-线条小狗动态表情包.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_low_energy_118",
+      "emotion_state": "LOW_ENERGY",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\118-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_tired_118",
+      "emotion_state": "TIRED",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\118-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_low_happiness_089",
+      "emotion_state": "LOW_HAPPINESS",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\089-线条小狗动态表情包.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_hungry_089",
+      "emotion_state": "HUNGRY",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\089-线条小狗动态表情包.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_low_happiness_093",
+      "emotion_state": "LOW_HAPPINESS",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\093-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_drained_121",
+      "emotion_state": "DRAINED",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\121-线条小狗动态表情包.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5500
+    },
+    {
+      "id": "emotion_drained_124",
+      "emotion_state": "DRAINED",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\124-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5500
+    },
+    {
+      "id": "emotion_dirty_121",
+      "emotion_state": "DIRTY",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\121-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5500
+    },
+    {
+      "id": "emotion_dirty_124",
+      "emotion_state": "DIRTY",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\124-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5500
+    },
+    {
+      "id": "emotion_bored_024",
+      "emotion_state": "BORED",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\024-线条小狗动态表情包.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_bored_044",
+      "emotion_state": "BORED",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\044-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "random_044",
+      "state": "RANDOM_ANIMATING",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\044-线条小狗动态表情包.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "random_071",
+      "state": "RANDOM_ANIMATING",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\071-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "interact_099",
+      "state": "INTERACTING",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\099-线条小狗动态表情包.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 3500
+    },
+    {
+      "id": "interact_100",
+      "state": "INTERACTING",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\100-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 3500
+    },
+    {
+      "id": "manual_petting",
+      "state": "MANUAL_ACTION",
+      "variant": "petting",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\097-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "manual_pat",
+      "state": "MANUAL_ACTION",
+      "variant": "pat",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\098-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 3000
+    },
+    {
+      "id": "manual_exercise",
+      "state": "MANUAL_ACTION",
+      "variant": "exercise",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\128-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 7000
+    },
+    {
+      "id": "manual_charge",
+      "state": "MANUAL_ACTION",
+      "variant": "charge",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\124-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 8000
+    },
+    {
+      "id": "manual_feed",
+      "state": "MANUAL_ACTION",
+      "variant": "feed",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\123-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "manual_play",
+      "state": "MANUAL_ACTION",
+      "variant": "play",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\153-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 6000
+    },
+    {
+      "id": "manual_clean",
+      "state": "MANUAL_ACTION",
+      "variant": "clean",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\097-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5500
+    },
+    {
+      "id": "manual_rest",
+      "state": "MANUAL_ACTION",
+      "variant": "rest",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\118-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 7000
+    },
+    {
+      "id": "manual_baji",
+      "state": "MANUAL_ACTION",
+      "variant": "baji",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\114-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "manual_feather_ball",
+      "state": "MANUAL_ACTION",
+      "variant": "feather_ball",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\149-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "manual_appear",
+      "state": "MANUAL_ACTION",
+      "variant": "appear",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\170-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 3500
+    },
+    {
+      "id": "manual_walkdog",
+      "state": "MANUAL_ACTION",
+      "variant": "walkdog",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\153-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 7000
+    },
+    {
+      "id": "drink_121",
+      "state": "REMINDING_DRINK",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\121-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "drink_122",
+      "state": "REMINDING_DRINK",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\122-线条小狗动态表情包.gif",
+      "weight": 1,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "sedentary_153",
+      "state": "REMINDING_SEDENTARY",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\153-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "sedentary_158",
+      "state": "REMINDING_SEDENTARY",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\158-线条小狗动态表情包.gif",
+      "weight": 1,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "time_130",
+      "state": "TIME_REPORTING",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\130-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "time_132",
+      "state": "TIME_REPORTING",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\132-线条小狗动态表情包.gif",
+      "weight": 1,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "weather_168",
+      "state": "WEATHER_SHOWING",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\168-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "weather_169",
+      "state": "WEATHER_SHOWING",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\169-线条小狗动态表情包.gif",
+      "weight": 1,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "growing_146",
+      "state": "GROWING",
+      "variant": "growing",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\146-线条小狗动态表情包.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "growing_149",
+      "state": "GROWING",
+      "variant": "growing",
+      "path": "线条小狗 动态表情包 200张等2个文件\\线条小狗 动态表情包 200张\\149-线条小狗动态表情包.gif",
+      "weight": 1,
+      "loop": true,
+      "min_duration_ms": 5000
+    }
+  ]
+}

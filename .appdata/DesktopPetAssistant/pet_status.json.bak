@@ -1,0 +1,16 @@
+{
+  "pet_name": "Momo",
+  "species": "default",
+  "growth_stage": "BABY",
+  "growth_exp": 0,
+  "hunger": 0,
+  "mood": 0,
+  "energy": 0,
+  "cleanliness": 0,
+  "favorability": 20,
+  "last_feed_time": null,
+  "last_play_time": null,
+  "last_clean_time": null,
+  "last_rest_time": null,
+  "last_growth_check_time": "2026-04-18T12:17:53.865059+08:00"
+}

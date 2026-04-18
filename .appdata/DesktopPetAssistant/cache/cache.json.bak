@@ -1,0 +1,196 @@
+{
+  "dialog:last_remote:random_chat": {
+    "value": {
+      "text": "人生就好像一颗种子，不管你是否准备好，总是要发芽的。"
+    },
+    "expires_at": "2026-04-18T13:44:47.047574+08:00"
+  },
+  "dialog:recent_texts": {
+    "value": [
+      "早上出门的话，可以加一件外套哦。",
+      "今天早晚温差有点大，带件外套会更安心。",
+      "今天可能会下雨，带把伞会更稳妥呀。",
+      "外面有些闷热，尽量穿得清爽一点吧。",
+      "今天天气不算太友好，平安顺利最重要呀。",
+      "今天活动得有点多，想先缓一缓。",
+      "出门时带件薄外套，会省心很多呢。",
+      "我有点累啦，睡一下会恢复得更快。",
+      "人生就好像一颗种子，不管你是否准备好，总是要发芽的。",
+      "放下手里的事几秒钟，喝口水吧。",
+      "先喝两口水吧，状态会更稳一点。",
+      "让我歇一会儿，好不好呀。"
+    ],
+    "expires_at": "2026-04-18T14:00:56.129385+08:00"
+  },
+  "dialog:last_remote:click": {
+    "value": {
+      "text": "夏天，那个夏天，还有那个夏天，即使经历无数次夏天，我还是说不出口。"
+    },
+    "expires_at": "2026-04-18T00:02:19.125450+08:00"
+  },
+  "answerbook:last:5c46dfde90d27cf4": {
+    "value": {
+      "question": "?????????",
+      "answer": "你需要保持冷静。",
+      "source": "remote"
+    },
+    "expires_at": "2026-04-18T00:13:55.314593+08:00"
+  },
+  "weather:last_snapshot": {
+    "value": {
+      "city": "焦作市·山阳区",
+      "summary": "晴",
+      "weather_code": "100",
+      "current_temp": 25,
+      "high_temp": 28,
+      "low_temp": 15,
+      "humidity": 38,
+      "wind": "南风 4级",
+      "forecast": [
+        {
+          "date": "2026-04-18",
+          "week": "星期六",
+          "temp_max": 28,
+          "temp_min": 15,
+          "weather_day": "晴",
+          "weather_night": "多云",
+          "wind_dir_day": "南风",
+          "wind_dir_night": "南风",
+          "wind_scale_day": "3级",
+          "wind_scale_night": "3级",
+          "humidity": 56,
+          "precip": 0,
+          "pop": 0,
+          "cloud": 18,
+          "uv_index": 7,
+          "sunrise": "05:51",
+          "sunset": "19:02"
+        },
+        {
+          "date": "2026-04-19",
+          "week": "星期日",
+          "temp_max": 29,
+          "temp_min": 13,
+          "weather_day": "晴",
+          "weather_night": "小雨",
+          "wind_dir_day": "南风",
+          "wind_dir_night": "南风",
+          "wind_scale_day": "4级",
+          "wind_scale_night": "4级",
+          "humidity": 54,
+          "precip": 3,
+          "pop": 0,
+          "cloud": 18,
+          "uv_index": 6,
+          "sunrise": "05:50",
+          "sunset": "19:02"
+        },
+        {
+          "date": "2026-04-20",
+          "week": "星期一",
+          "temp_max": 20,
+          "temp_min": 9,
+          "weather_day": "阴",
+          "weather_night": "阴",
+          "wind_dir_day": "南风",
+          "wind_dir_night": "南风",
+          "wind_scale_day": "2级",
+          "wind_scale_night": "2级",
+          "humidity": 32,
+          "precip": 0,
+          "pop": 0,
+          "cloud": 99,
+          "uv_index": 7,
+          "sunrise": "05:49",
+          "sunset": "19:03"
+        },
+        {
+          "date": "2026-04-21",
+          "week": "星期二",
+          "temp_max": 17,
+          "temp_min": 10,
+          "weather_day": "雨",
+          "weather_night": "小雨",
+          "wind_dir_day": "南风",
+          "wind_dir_night": "南风",
+          "wind_scale_day": "2级",
+          "wind_scale_night": "2级",
+          "humidity": 57,
+          "precip": 14.1,
+          "pop": 60,
+          "cloud": 99,
+          "uv_index": 2,
+          "sunrise": "05:47",
+          "sunset": "19:04"
+        },
+        {
+          "date": "2026-04-22",
+          "week": "星期三",
+          "temp_max": 17,
+          "temp_min": 7,
+          "weather_day": "小雨",
+          "weather_night": "晴",
+          "wind_dir_day": "南风",
+          "wind_dir_night": "南风",
+          "wind_scale_day": "2级",
+          "wind_scale_night": "2级",
+          "humidity": 65,
+          "precip": 3,
+          "pop": 50,
+          "cloud": 99,
+          "uv_index": 4,
+          "sunrise": "05:46",
+          "sunset": "19:05"
+        },
+        {
+          "date": "2026-04-23",
+          "week": "星期四",
+          "temp_max": 20,
+          "temp_min": 9,
+          "weather_day": "晴",
+          "weather_night": "晴",
+          "wind_dir_day": "南风",
+          "wind_dir_night": "南风",
+          "wind_scale_day": "2级",
+          "wind_scale_night": "2级",
+          "humidity": 61,
+          "precip": 0,
+          "pop": 0,
+          "cloud": 18,
+          "uv_index": 7,
+          "sunrise": "05:45",
+          "sunset": "19:06"
+        },
+        {
+          "date": "2026-04-24",
+          "week": "星期五",
+          "temp_max": 23,
+          "temp_min": 13,
+          "weather_day": "晴",
+          "weather_night": "晴",
+          "wind_dir_day": "南风",
+          "wind_dir_night": "南风",
+          "wind_scale_day": "2级",
+          "wind_scale_night": "2级",
+          "humidity": 56,
+          "precip": 0,
+          "pop": 0,
+          "cloud": 18,
+          "uv_index": 6,
+          "sunrise": "05:44",
+          "sunset": "19:07"
+        }
+      ],
+      "hourly": null,
+      "precipitation_probability": null,
+      "life_indices": null,
+      "retrieved_at": "2026-04-18T13:30:46.937374+08:00",
+      "source": "remote"
+    },
+    "expires_at": "2026-04-18T14:30:46.937404+08:00"
+  },
+  "city:last_lookup": {
+    "value": "郑州市·金水区",
+    "expires_at": "2026-04-18T23:29:11.524863+08:00"
+  }
+}

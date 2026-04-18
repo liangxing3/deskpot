@@ -1,0 +1,15 @@
+{
+  "window_position": {
+    "x": 80,
+    "y": 100
+  },
+  "drink_remind_interval_minutes": 45,
+  "sedentary_remind_interval_minutes": 90,
+  "random_dialog_enabled": true,
+  "hourly_report_enabled": true,
+  "weather_enabled": true,
+  "dialog_cooldown_seconds": 3,
+  "weather_update_interval_minutes": 60,
+  "auto_start": false,
+  "reminder_pause_until": "2026-04-18T14:33:25.455130+08:00"
+}
