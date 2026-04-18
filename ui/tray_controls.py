@@ -23,29 +23,38 @@ class TrayMenu(QObject):
         self.menu = QMenu()
         self.menu.setStyleSheet(
             f"""
-            QMenu {
-                background-color: rgba(255, 255, 255, 250);
+            QMenu {{
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 rgba(255, 255, 255, 255),
+                    stop:1 rgba(255, 253, 255, 255));
                 border: 1px solid #FFCFDF;
-                padding: 6px;
-                border-radius: 8px;
+                padding: 8px;
+                border-radius: 12px;
                 font-family: {ui_font_stack(include_emoji=True)};
-            }
-            QMenu::item {
-                padding: 8px 24px;
-                border-radius: 6px;
+            }}
+            QMenu::item {{
+                padding: 10px 28px;
+                border-radius: 8px;
                 color: #5A5A5A;
-                font-size: 13px;
-                margin: 2px 0px;
-            }
-            QMenu::item:selected {
-                background-color: #FFF0F5;
+                font-size: 14px;
+                margin: 3px 0px;
+                font-weight: 500;
+            }}
+            QMenu::item:selected {{
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FFF0F5,
+                    stop:1 #FFE8EC);
                 color: #FF6B9D;
-            }
-            QMenu::separator {
+                font-weight: 600;
+            }}
+            QMenu::separator {{
                 height: 1px;
-                background: #FFE4E1;
-                margin: 4px 8px;
-            }
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 transparent,
+                    stop:0.5 #FFE4E1,
+                    stop:1 transparent);
+                margin: 6px 12px;
+            }}
             """
         )
 

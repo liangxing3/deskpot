@@ -28,55 +28,71 @@ class PetStatusPanel(QDialog):
         self.resize(380, 420)
         self.setStyleSheet(
             f"""
-            QDialog {
-                background-color: #FFF9FB;
+            QDialog {{
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FFF9FB,
+                    stop:1 #FFF5F7);
                 font-family: {ui_font_stack(include_emoji=True)};
-            }
-            QGroupBox {
+                border-radius: 16px;
+            }}
+            QGroupBox {{
                 border: 2px solid #FFE4E1;
-                border-radius: 12px;
-                margin-top: 15px;
-                background: white;
+                border-radius: 16px;
+                margin-top: 18px;
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FFFFFF,
+                    stop:1 #FFFBFD);
                 font-weight: bold;
-                color: #5A5A5A;
-            }
-            QGroupBox::title {
+                color: #FF6B9D;
+                font-size: 14px;
+            }}
+            QGroupBox::title {{
                 subcontrol-origin: margin;
-                left: 15px;
-                padding: 0 5px;
-            }
-            QLabel {
+                left: 18px;
+                padding: 0 8px;
+                background: transparent;
+            }}
+            QLabel {{
                 color: #666666;
                 font-size: 13px;
-            }
-            QPushButton {
-                background-color: #FF6B9D;
+                font-weight: 500;
+            }}
+            QPushButton {{
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FF6B9D,
+                    stop:1 #FF8EAF);
                 color: white;
-                border-radius: 10px;
-                padding: 12px;
+                border-radius: 12px;
+                padding: 14px 16px;
                 font-size: 13px;
                 font-weight: bold;
                 border: none;
-            }
-            QPushButton:hover {
-                background-color: #FF8EAF;
-            }
-            QPushButton:pressed {
-                padding-top: 14px;
-                padding-bottom: 10px;
-            }
-            QProgressBar {
+            }}
+            QPushButton:hover {{
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FF8EAF,
+                    stop:1 #FF9A9E);
+            }}
+            QPushButton:pressed {{
+                background: #FF9A9E;
+                padding-top: 16px;
+                padding-bottom: 12px;
+            }}
+            QProgressBar {{
                 border: 1px solid #FFE4E1;
-                border-radius: 6px;
-                background: #FFF0F5;
+                border-radius: 8px;
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FFF0F5,
+                    stop:1 #FFE8EC);
                 text-align: center;
                 color: #5A5A5A;
                 font-size: 12px;
-                height: 18px;
-            }
-            QProgressBar::chunk {
-                border-radius: 5px;
-            }
+                height: 20px;
+                font-weight: 600;
+            }}
+            QProgressBar::chunk {{
+                border-radius: 7px;
+            }}
             """
         )
 
@@ -145,12 +161,40 @@ class PetStatusPanel(QDialog):
         row = QWidget(self)
         layout = QHBoxLayout(row)
         layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(10)
+        
         caption = QLabel(label)
-        caption.setFixedWidth(65)
+        caption.setStyleSheet(
+            f'color: #FF6B9D; font-size: 12px; font-weight: 600; font-family: {ui_font_stack()};'
+        )
+        caption.setFixedWidth(70)
+        
         bar = QProgressBar()
         bar.setRange(0, 100)
         bar.setTextVisible(True)
-        bar.setStyleSheet(f"QProgressBar::chunk {{ background-color: {color_hex}; }}")
+        bar.setStyleSheet(
+            f"""
+            QProgressBar {{
+                border: 1px solid #FFE4E1;
+                border-radius: 8px;
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FFF0F5,
+                    stop:1 #FFE8EC);
+                text-align: center;
+                color: #5A5A5A;
+                font-size: 11px;
+                height: 20px;
+                font-weight: 600;
+            }}
+            QProgressBar::chunk {{
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 {color_hex},
+                    stop:1 {color_hex}DD);
+                border-radius: 7px;
+            }}
+            """
+        )
+        
         layout.addWidget(caption)
         layout.addWidget(bar, 1)
         container.addWidget(row)

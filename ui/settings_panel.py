@@ -33,57 +33,96 @@ class SettingsWindow(QDialog):
         self.resize(520, 380)
         self.setStyleSheet(
             f"""
-            QDialog {
-                background-color: #FFF9FB;
+            QDialog {{
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FFF9FB,
+                    stop:1 #FFF5F7);
                 font-family: {ui_font_stack(include_emoji=True)};
-            }
-            QListWidget {
-                background-color: #FFFFFF;
+                border-radius: 16px;
+            }}
+            QListWidget {{
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FFFFFF,
+                    stop:1 #FFFBFD);
                 border: 2px solid #FFE4E1;
-                border-radius: 12px;
+                border-radius: 16px;
                 outline: 0;
-            }
-            QListWidget::item {
-                height: 45px;
-                border-radius: 8px;
-                margin: 4px 8px;
-                padding-left: 10px;
+                padding: 8px;
+            }}
+            QListWidget::item {{
+                height: 48px;
+                border-radius: 10px;
+                margin: 4px 6px;
+                padding-left: 12px;
                 color: #5A5A5A;
-            }
-            QListWidget::item:selected {
-                background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #FF9A9E, stop: 1 #FECFEF);
+                font-size: 14px;
+            }}
+            QListWidget::item:selected {{
+                background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
+                    stop: 0 #FF9A9E, stop: 1 #FECFEF);
                 color: white;
                 font-weight: bold;
-            }
-            QStackedWidget {
+                border: 1px solid #FF8EAF;
+            }}
+            QListWidget::item:hover {{
+                background: rgba(255, 240, 245, 150);
+            }}
+            QStackedWidget {{
                 background-color: transparent;
-            }
-            QLabel {
+            }}
+            QLabel {{
                 color: #5A5A5A;
                 font-size: 13px;
-            }
-            QSpinBox {
+                font-weight: 500;
+            }}
+            QSpinBox {{
                 border: 2px solid #FFE4E1;
-                border-radius: 6px;
-                padding: 4px;
+                border-radius: 8px;
+                padding: 6px 10px;
                 background: white;
                 color: #5A5A5A;
-            }
-            QCheckBox {
+                font-size: 13px;
+                min-height: 24px;
+            }}
+            QSpinBox:focus {{
+                border: 2px solid #FF9A9E;
+                background: #FFFBFD;
+            }}
+            QCheckBox {{
                 color: #5A5A5A;
                 font-size: 13px;
-            }
-            QPushButton {
-                background-color: #FFB3C6;
+                spacing: 8px;
+            }}
+            QCheckBox::indicator {{
+                width: 18px;
+                height: 18px;
+                border: 2px solid #FFE4E1;
+                border-radius: 4px;
+                background: white;
+            }}
+            QCheckBox::indicator:checked {{
+                background: #FF9A9E;
+                border: 2px solid #FF9A9E;
+            }}
+            QPushButton {{
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FFB3C6,
+                    stop:1 #FF9A9E);
                 color: white;
                 border: none;
-                padding: 8px 16px;
-                border-radius: 8px;
+                padding: 10px 20px;
+                border-radius: 10px;
                 font-weight: bold;
-            }
-            QPushButton:hover {
-                background-color: #FF9A9E;
-            }
+                font-size: 13px;
+            }}
+            QPushButton:hover {{
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FF9A9E,
+                    stop:1 #FF8EAF);
+            }}
+            QPushButton:pressed {{
+                background: #FF8EAF;
+            }}
             """
         )
 

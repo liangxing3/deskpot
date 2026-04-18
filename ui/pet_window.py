@@ -64,9 +64,17 @@ class PetWindow(QWidget):
         self.animation_backdrop.setStyleSheet(
             """
             QWidget {
-                background: rgba(255, 250, 252, 228);
-                border: 2px solid rgba(255, 207, 223, 190);
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                    stop:0 rgba(255, 250, 252, 240),
+                    stop:1 rgba(255, 245, 248, 240));
+                border: 2px solid rgba(255, 207, 223, 200);
                 border-radius: 28px;
+            }
+            QWidget:hover {
+                border: 2px solid rgba(255, 180, 200, 220);
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                    stop:0 rgba(255, 252, 254, 245),
+                    stop:1 rgba(255, 248, 250, 245));
             }
             """
         )
@@ -90,10 +98,18 @@ class PetWindow(QWidget):
         self.status_card.setStyleSheet(
             f"""
             QWidget {{
-                background: rgba(255, 249, 251, 248);
-                border: 1px solid rgba(255, 207, 223, 210);
-                border-radius: 14px;
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 rgba(255, 253, 255, 250),
+                    stop:1 rgba(255, 249, 251, 250));
+                border: 1px solid rgba(255, 207, 223, 220);
+                border-radius: 16px;
                 font-family: {ui_font_stack()};
+            }}
+            QWidget:hover {{
+                border: 1px solid rgba(255, 180, 200, 240);
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 rgba(255, 255, 255, 255),
+                    stop:1 rgba(255, 251, 253, 255));
             }}
             """
         )
@@ -103,8 +119,8 @@ class PetWindow(QWidget):
 
         self.stage_label = QLabel("成长阶段：幼年期  亲密度：20/100", self.status_card)
         self.stage_label.setStyleSheet(
-            'color: #5A5A5A; font-size: 11px; font-weight: 700; '
-            f'font-family: {ui_font_stack()};'
+            'color: #FF6B9D; font-size: 12px; font-weight: 700; '
+            f'font-family: {ui_font_stack()}; padding: 4px 8px; background: rgba(255, 240, 245, 180); border-radius: 8px;'
         )
         self.status_layout.addWidget(self.stage_label)
 
@@ -309,28 +325,30 @@ class PetWindow(QWidget):
         row = QWidget(self.status_card)
         layout = QHBoxLayout(row)
         layout.setContentsMargins(0, 0, 0, 0)
-        layout.setSpacing(6)
+        layout.setSpacing(8)
 
         caption = QLabel(label, row)
         caption.setStyleSheet(
-            f'color: #666666; font-size: 11px; font-family: {ui_font_stack()};'
+            f'color: #FF6B9D; font-size: 11px; font-weight: 600; font-family: {ui_font_stack()};'
         )
-        caption.setFixedWidth(64)
+        caption.setFixedWidth(48)
         bar = QProgressBar(row)
         bar.setRange(0, 100)
         bar.setValue(80)
         bar.setTextVisible(False)
-        bar.setFixedHeight(10)
+        bar.setFixedHeight(12)
         bar.setStyleSheet(
             f"""
             QProgressBar {{
-                background-color: rgba(255, 240, 245, 220);
-                border: 1px solid rgba(255, 228, 225, 220);
-                border-radius: 5px;
+                background-color: rgba(255, 240, 245, 200);
+                border: 1px solid rgba(255, 228, 225, 200);
+                border-radius: 6px;
             }}
             QProgressBar::chunk {{
-                background-color: {color};
-                border-radius: 4px;
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 {color},
+                    stop:1 {color}DD);
+                border-radius: 5px;
             }}
             """
         )
@@ -345,27 +363,36 @@ class PetWindow(QWidget):
         self.context_menu.setStyleSheet(
             f"""
             QMenu {{
-                background-color: rgba(255, 255, 255, 245);
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 rgba(255, 255, 255, 255),
+                    stop:1 rgba(255, 253, 255, 255));
                 border: 1px solid #FFCFDF;
-                border-radius: 12px;
-                padding: 8px;
+                padding: 10px;
+                border-radius: 14px;
                 font-family: {ui_font_stack(include_emoji=True)};
             }}
             QMenu::item {{
-                padding: 8px 24px;
-                border-radius: 8px;
+                padding: 10px 26px;
+                border-radius: 10px;
                 color: #5A5A5A;
-                font-size: 13px;
-                margin: 2px 0px;
+                font-size: 14px;
+                margin: 3px 0px;
+                font-weight: 500;
             }}
             QMenu::item:selected {{
-                background-color: #FFF0F5;
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FFF0F5,
+                    stop:1 #FFE8EC);
                 color: #FF6B9D;
+                font-weight: 600;
             }}
             QMenu::separator {{
                 height: 1px;
-                background: #FFE4E1;
-                margin: 4px 8px;
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 transparent,
+                    stop:0.5 #FFE4E1,
+                    stop:1 transparent);
+                margin: 8px 14px;
             }}
             """
         )
