@@ -400,6 +400,74 @@ class PetWindow(QWidget):
 
         menu_layout = QVBoxLayout(self.context_menu)
         menu_layout.setContentsMargins(0, 0, 0, 0)
+        menu_layout.setSpacing(8)
+
+        main_actions = (
+            ("pet_interactions", "🐾 宠物互动"),
+            ("answerbook", "📖 答案之书"),
+            ("weather", "⛅ 天气"),
+            ("settings", "⚙️ 系统设置"),
+            ("pause", "⏸️ 暂停提醒"),
+            ("reset", "🔄 重置位置"),
+            ("exit", "❌ 退出程序"),
+        )
+
+        for action_id, label in main_actions:
+            button = QPushButton(label)
+            button.clicked.connect(
+                lambda checked=False, current_action_id=action_id, btn=button: self._on_main_menu_clicked(
+                    current_action_id, btn
+                )
+            )
+            menu_layout.addWidget(button)
+
+        self.context_menu.hide()
+        
+        self._build_pet_interaction_menu()
+
+    def _build_pet_interaction_menu(self) -> None:
+        self.pet_interaction_menu = QDialog(self)
+        self.pet_interaction_menu.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.Tool)
+        self.pet_interaction_menu.setAttribute(Qt.WA_TranslucentBackground, True)
+        self.pet_interaction_menu.setStyleSheet(
+            f"""
+            QDialog {{
+                background: transparent;
+            }}
+            QPushButton {{
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 rgba(255, 255, 255, 255),
+                    stop:1 rgba(255, 253, 255, 255));
+                border: 1px solid #FFCFDF;
+                border-radius: 12px;
+                color: #5A5A5A;
+                font-size: 18px;
+                font-weight: 500;
+                padding: 14px 18px;
+                min-width: 100px;
+                min-height: 55px;
+            }}
+            QPushButton:hover {{
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FFF0F5,
+                    stop:1 #FFE8EC);
+                color: #FF6B9D;
+                font-weight: 600;
+                border: 2px solid #FFCFDF;
+            }}
+            QPushButton:pressed {{
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #FFE8EC,
+                    stop:1 #FFD6E0);
+                color: #FF6B9D;
+                font-weight: 700;
+                padding: 15px 17px;
+            }}
+            """
+        )
+
+        menu_layout = QVBoxLayout(self.pet_interaction_menu)
+        menu_layout.setContentsMargins(0, 0, 0, 0)
         menu_layout.setSpacing(0)
 
         grouped_actions = (
@@ -418,7 +486,7 @@ class PetWindow(QWidget):
                 spec = MANUAL_ACTION_SPECS[action_id]
                 button = QPushButton(f"{prefix} {spec.label}")
                 button.clicked.connect(
-                    lambda checked=False, current_action_id=action_id: self._on_menu_action_clicked(
+                    lambda checked=False, current_action_id=action_id: self._on_pet_interaction_clicked(
                         current_action_id, button
                     )
                 )
@@ -426,7 +494,40 @@ class PetWindow(QWidget):
             
             menu_layout.addLayout(row_layout)
 
-        self.context_menu.hide()
+        self.pet_interaction_menu.hide()
+
+    def _on_main_menu_clicked(self, action_id: str, button: QPushButton) -> None:
+        self._play_click_animation(button)
+        
+        if action_id == "pet_interactions":
+            self._show_pet_interaction_menu()
+        else:
+            self.quick_action_requested.emit(action_id)
+            self._close_menu()
+
+    def _on_pet_interaction_clicked(self, action_id: str, button: QPushButton) -> None:
+        self._play_click_animation(button)
+        self.quick_action_requested.emit(action_id)
+        self._close_pet_interaction_menu()
+        self._close_menu()
+
+    def _show_pet_interaction_menu(self) -> None:
+        if self.context_menu.isVisible():
+            main_pos = self.context_menu.pos()
+            menu_x = main_pos.x() + 420
+            menu_y = main_pos.y()
+            
+            screen_width = QApplication.primaryScreen().geometry().width()
+            if menu_x + 400 > screen_width:
+                menu_x = main_pos.x() - 420
+            
+            self.pet_interaction_menu.move(menu_x, menu_y)
+            self.pet_interaction_menu.resize(400, 400)
+            self.pet_interaction_menu.show()
+            self.pet_interaction_menu.raise_()
+
+    def _close_pet_interaction_menu(self) -> None:
+        self.pet_interaction_menu.hide()
 
     def _on_menu_action_clicked(self, action_id: str, button: QPushButton) -> None:
         self._play_click_animation(button)
@@ -436,6 +537,7 @@ class PetWindow(QWidget):
     def _close_menu(self) -> None:
         if hasattr(self, '_menu_position_timer'):
             self._menu_position_timer.stop()
+        self._close_pet_interaction_menu()
         self.context_menu.hide()
 
     def _play_click_animation(self, button: QPushButton) -> None:
@@ -457,39 +559,9 @@ class PetWindow(QWidget):
         opacity_anim.finished.connect(lambda: opacity_anim2.start())
         opacity_anim.start()
 
-        separator = QWidget(self.context_menu)
-        separator.setFixedHeight(1)
-        separator.setStyleSheet("background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 transparent, stop:0.5 #FFE4E1, stop:1 transparent);")
-        menu_layout.addWidget(separator)
-
-        bottom_actions = (
-            ("status", "🐾 宠物状态"),
-            ("answerbook", "📖 答案之书"),
-            ("weather", "⛅ 立即查看天气"),
-            ("settings", "⚙️ 系统设置"),
-            ("pause", "⏸️ 暂停提醒 1 小时"),
-            ("reset", "🔄 重置位置"),
-            ("exit", "❌ 退出程序"),
-        )
-
-        bottom_layout = QHBoxLayout()
-        bottom_layout.setSpacing(8)
-        bottom_layout.setContentsMargins(8, 8, 8, 8)
-
-        for action_id, label in bottom_actions:
-            button = QPushButton(label)
-            button.clicked.connect(
-                lambda checked=False, current_action_id=action_id, btn=button: self._on_menu_action_clicked(
-                    current_action_id, btn
-                )
-            )
-            bottom_layout.addWidget(button, 1)
-
-        menu_layout.addLayout(bottom_layout)
-
     def _show_context_menu(self, global_pos: QPoint) -> None:
         self.context_menu.move(global_pos)
-        self.context_menu.resize(400, 450)
+        self.context_menu.resize(400, 480)
         self.context_menu.show()
         self.context_menu.raise_()
         
@@ -502,7 +574,7 @@ class PetWindow(QWidget):
         if self.context_menu.isVisible():
             pet_center = self.mapToGlobal(self.rect().center())
             menu_x = pet_center.x() - 200
-            menu_y = pet_center.y() - 225
+            menu_y = pet_center.y() - 240
             
             if menu_x < 0:
                 menu_x = 10
@@ -511,8 +583,8 @@ class PetWindow(QWidget):
             
             if menu_y < 0:
                 menu_y = 10
-            elif menu_y + 450 > QApplication.primaryScreen().geometry().height():
-                menu_y = QApplication.primaryScreen().geometry().height() - 460
+            elif menu_y + 480 > QApplication.primaryScreen().geometry().height():
+                menu_y = QApplication.primaryScreen().geometry().height() - 490
             
             self.context_menu.move(menu_x, menu_y)
             self._menu_position_timer.start(50)
