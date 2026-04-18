@@ -26,6 +26,7 @@ class PetStatusPanel(QDialog):
         self.setWindowTitle("宠物状态")
         self.setModal(False)
         self.resize(380, 420)
+        self.setAttribute(Qt.WA_TranslucentBackground, False)
         self.setStyleSheet(
             f"""
             QDialog {{

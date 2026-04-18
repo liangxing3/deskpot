@@ -31,6 +31,7 @@ class SettingsWindow(QDialog):
         self.setWindowTitle("系统设置")
         self.setModal(False)
         self.resize(520, 380)
+        self.setAttribute(Qt.WA_TranslucentBackground, False)
         self.setStyleSheet(
             f"""
             QDialog {{
