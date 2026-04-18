@@ -90,7 +90,13 @@ class DialogBubble(QWidget):
             self.hide()
 
     def paintEvent(self, event) -> None:  # noqa: N802
+        if not self.isVisible():
+            return
+            
         painter = QPainter(self)
+        if not painter.isActive():
+            return
+            
         painter.setRenderHint(QPainter.Antialiasing)
 
         path = QPainterPath()
@@ -105,4 +111,5 @@ class DialogBubble(QWidget):
         painter.fillPath(path, gradient)
         painter.setPen(QPen(QColor(255, 207, 223, 220), 2))
         painter.drawPath(path)
+        painter.end()
         super().paintEvent(event)

@@ -361,10 +361,15 @@ class PetWindow(QWidget):
         self.context_menu = QDialog(self)
         self.context_menu.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.Tool)
         self.context_menu.setAttribute(Qt.WA_TranslucentBackground, True)
+        self.context_menu.setAttribute(Qt.WA_OpaquePaintEvent, False)
         self.context_menu.setStyleSheet(
             f"""
             QDialog {{
-                background: transparent;
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 rgba(255, 255, 255, 255),
+                    stop:1 rgba(255, 253, 255, 255));
+                border: 1px solid #FFCFDF;
+                border-radius: 16px;
             }}
             QPushButton {{
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
@@ -412,14 +417,23 @@ class PetWindow(QWidget):
             ("exit", "❌ 退出程序"),
         )
 
-        for action_id, label in main_actions:
-            button = QPushButton(label)
-            button.clicked.connect(
-                lambda checked=False, current_action_id=action_id, btn=button: self._on_main_menu_clicked(
-                    current_action_id, btn
-                )
-            )
-            menu_layout.addWidget(button)
+        for i in range(0, len(main_actions), 2):
+            row_layout = QHBoxLayout()
+            row_layout.setSpacing(8)
+            row_layout.setContentsMargins(8, 8, 8, 8)
+            
+            for j in range(2):
+                if i + j < len(main_actions):
+                    action_id, label = main_actions[i + j]
+                    button = QPushButton(label)
+                    button.clicked.connect(
+                        lambda checked=False, current_action_id=action_id, btn=button: self._on_main_menu_clicked(
+                            current_action_id, btn
+                        )
+                    )
+                    row_layout.addWidget(button, 1)
+            
+            menu_layout.addLayout(row_layout)
 
         self.context_menu.hide()
         
@@ -429,10 +443,15 @@ class PetWindow(QWidget):
         self.pet_interaction_menu = QDialog(self)
         self.pet_interaction_menu.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.Tool)
         self.pet_interaction_menu.setAttribute(Qt.WA_TranslucentBackground, True)
+        self.pet_interaction_menu.setAttribute(Qt.WA_OpaquePaintEvent, False)
         self.pet_interaction_menu.setStyleSheet(
             f"""
             QDialog {{
-                background: transparent;
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 rgba(255, 255, 255, 255),
+                    stop:1 rgba(255, 253, 255, 255));
+                border: 1px solid #FFCFDF;
+                border-radius: 16px;
             }}
             QPushButton {{
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
@@ -561,7 +580,7 @@ class PetWindow(QWidget):
 
     def _show_context_menu(self, global_pos: QPoint) -> None:
         self.context_menu.move(global_pos)
-        self.context_menu.resize(400, 480)
+        self.context_menu.resize(420, 520)
         self.context_menu.show()
         self.context_menu.raise_()
         
@@ -573,18 +592,18 @@ class PetWindow(QWidget):
     def _update_menu_position(self) -> None:
         if self.context_menu.isVisible():
             pet_center = self.mapToGlobal(self.rect().center())
-            menu_x = pet_center.x() - 200
-            menu_y = pet_center.y() - 240
+            menu_x = pet_center.x() - 210
+            menu_y = pet_center.y() - 260
             
             if menu_x < 0:
                 menu_x = 10
-            elif menu_x + 400 > QApplication.primaryScreen().geometry().width():
-                menu_x = QApplication.primaryScreen().geometry().width() - 410
+            elif menu_x + 420 > QApplication.primaryScreen().geometry().width():
+                menu_x = QApplication.primaryScreen().geometry().width() - 430
             
             if menu_y < 0:
                 menu_y = 10
-            elif menu_y + 480 > QApplication.primaryScreen().geometry().height():
-                menu_y = QApplication.primaryScreen().geometry().height() - 490
+            elif menu_y + 520 > QApplication.primaryScreen().geometry().height():
+                menu_y = QApplication.primaryScreen().geometry().height() - 530
             
             self.context_menu.move(menu_x, menu_y)
             self._menu_position_timer.start(50)
