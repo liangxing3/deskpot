@@ -119,8 +119,8 @@ class PetWindow(QWidget):
 
         self.stage_label = QLabel("成长阶段：幼年期  亲密度：20/100", self.status_card)
         self.stage_label.setStyleSheet(
-            'color: #FF6B9D; font-size: 12px; font-weight: 700; '
-            f'font-family: {ui_font_stack()}; padding: 4px 8px; background: rgba(255, 240, 245, 180); border-radius: 8px;'
+            'color: #FF6B9D; font-size: 13px; font-weight: 700; '
+            f'font-family: {ui_font_stack()}; padding: 5px 10px; background: rgba(255, 240, 245, 180); border-radius: 8px;'
         )
         self.status_layout.addWidget(self.stage_label)
 
@@ -367,17 +367,18 @@ class PetWindow(QWidget):
                     stop:0 rgba(255, 255, 255, 255),
                     stop:1 rgba(255, 253, 255, 255));
                 border: 1px solid #FFCFDF;
-                padding: 10px;
+                padding: 12px;
                 border-radius: 14px;
                 font-family: {ui_font_stack(include_emoji=True)};
             }}
             QMenu::item {{
-                padding: 10px 26px;
+                padding: 12px 28px;
                 border-radius: 10px;
                 color: #5A5A5A;
-                font-size: 14px;
-                margin: 3px 0px;
+                font-size: 15px;
+                margin: 4px 0px;
                 font-weight: 500;
+                min-width: 120px;
             }}
             QMenu::item:selected {{
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
@@ -385,6 +386,7 @@ class PetWindow(QWidget):
                     stop:1 #FFE8EC);
                 color: #FF6B9D;
                 font-weight: 600;
+                border: 1px solid #FFCFDF;
             }}
             QMenu::separator {{
                 height: 1px;
@@ -392,23 +394,16 @@ class PetWindow(QWidget):
                     stop:0 transparent,
                     stop:0.5 #FFE4E1,
                     stop:1 transparent);
-                margin: 8px 14px;
+                margin: 10px 16px;
             }}
             """
         )
 
         grouped_actions = (
-            (("feed", "🍖"), ("play", "🧶"), ("clean", "🛁"), ("rest", "💤")),
-            (
-                ("petting", "🐾"),
-                ("pat", "🤏"),
-                ("exercise", "🏃"),
-                ("charge", "🔋"),
-                ("baji", "💗"),
-                ("feather_ball", "🪀"),
-                ("appear", "🎲"),
-                ("walkdog", "🦮"),
-            ),
+            (("feed", "🍖"), ("play", "🧶"), ("clean", "🛁")),
+            (("rest", "💤"), ("petting", "🐾"), ("pat", "🤏")),
+            (("exercise", "🏃"), ("charge", "🔋"), ("baji", "💗")),
+            (("feather_ball", "🪀"), ("appear", "🎲"), ("walkdog", "🦮")),
         )
         for group_index, action_group in enumerate(grouped_actions):
             if group_index:

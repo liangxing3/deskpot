@@ -30,7 +30,7 @@ class SettingsWindow(QDialog):
         super().__init__(parent)
         self.setWindowTitle("系统设置")
         self.setModal(False)
-        self.resize(520, 380)
+        self.resize(560, 400)
         self.setAttribute(Qt.WA_TranslucentBackground, False)
         self.setStyleSheet(
             f"""
@@ -48,15 +48,15 @@ class SettingsWindow(QDialog):
                 border: 2px solid #FFE4E1;
                 border-radius: 16px;
                 outline: 0;
-                padding: 8px;
+                padding: 10px;
             }}
             QListWidget::item {{
-                height: 48px;
+                height: 52px;
                 border-radius: 10px;
                 margin: 4px 6px;
-                padding-left: 12px;
+                padding-left: 14px;
                 color: #5A5A5A;
-                font-size: 14px;
+                font-size: 15px;
             }}
             QListWidget::item:selected {{
                 background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, 
@@ -73,17 +73,17 @@ class SettingsWindow(QDialog):
             }}
             QLabel {{
                 color: #5A5A5A;
-                font-size: 13px;
+                font-size: 14px;
                 font-weight: 500;
             }}
             QSpinBox {{
                 border: 2px solid #FFE4E1;
                 border-radius: 8px;
-                padding: 6px 10px;
+                padding: 8px 12px;
                 background: white;
                 color: #5A5A5A;
-                font-size: 13px;
-                min-height: 24px;
+                font-size: 14px;
+                min-height: 28px;
             }}
             QSpinBox:focus {{
                 border: 2px solid #FF9A9E;
@@ -91,12 +91,12 @@ class SettingsWindow(QDialog):
             }}
             QCheckBox {{
                 color: #5A5A5A;
-                font-size: 13px;
-                spacing: 8px;
+                font-size: 14px;
+                spacing: 10px;
             }}
             QCheckBox::indicator {{
-                width: 18px;
-                height: 18px;
+                width: 20px;
+                height: 20px;
                 border: 2px solid #FFE4E1;
                 border-radius: 4px;
                 background: white;
@@ -111,10 +111,11 @@ class SettingsWindow(QDialog):
                     stop:1 #FF9A9E);
                 color: white;
                 border: none;
-                padding: 10px 20px;
+                padding: 12px 24px;
                 border-radius: 10px;
                 font-weight: bold;
-                font-size: 13px;
+                font-size: 14px;
+                min-height: 40px;
             }}
             QPushButton:hover {{
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,

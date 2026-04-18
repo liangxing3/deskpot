@@ -25,7 +25,7 @@ class PetStatusPanel(QDialog):
         super().__init__(parent)
         self.setWindowTitle("宠物状态")
         self.setModal(False)
-        self.resize(380, 420)
+        self.resize(420, 450)
         self.setAttribute(Qt.WA_TranslucentBackground, False)
         self.setStyleSheet(
             f"""
@@ -45,7 +45,7 @@ class PetStatusPanel(QDialog):
                     stop:1 #FFFBFD);
                 font-weight: bold;
                 color: #FF6B9D;
-                font-size: 14px;
+                font-size: 16px;
             }}
             QGroupBox::title {{
                 subcontrol-origin: margin;
@@ -55,7 +55,7 @@ class PetStatusPanel(QDialog):
             }}
             QLabel {{
                 color: #666666;
-                font-size: 13px;
+                font-size: 15px;
                 font-weight: 500;
             }}
             QPushButton {{
@@ -64,10 +64,11 @@ class PetStatusPanel(QDialog):
                     stop:1 #FF8EAF);
                 color: white;
                 border-radius: 12px;
-                padding: 14px 16px;
-                font-size: 13px;
+                padding: 16px 18px;
+                font-size: 15px;
                 font-weight: bold;
                 border: none;
+                min-height: 50px;
             }}
             QPushButton:hover {{
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
@@ -76,8 +77,8 @@ class PetStatusPanel(QDialog):
             }}
             QPushButton:pressed {{
                 background: #FF9A9E;
-                padding-top: 16px;
-                padding-bottom: 12px;
+                padding-top: 18px;
+                padding-bottom: 14px;
             }}
             QProgressBar {{
                 border: 1px solid #FFE4E1;
@@ -87,8 +88,8 @@ class PetStatusPanel(QDialog):
                     stop:1 #FFE8EC);
                 text-align: center;
                 color: #5A5A5A;
-                font-size: 12px;
-                height: 20px;
+                font-size: 13px;
+                height: 22px;
                 font-weight: 600;
             }}
             QProgressBar::chunk {{
@@ -119,12 +120,15 @@ class PetStatusPanel(QDialog):
 
         action_box = QGroupBox("🎮 互动动作")
         action_grid = QGridLayout(action_box)
-        action_grid.setSpacing(10)
+        action_grid.setSpacing(12)
+        action_grid.setContentsMargins(10, 20, 10, 10)
         actions = (
             ("feed", "🍖 喂食"),
             ("play", "🧶 陪玩"),
             ("clean", "🛁 洗澡"),
             ("rest", "💤 休息"),
+            ("petting", "🐾 抚摸"),
+            ("pat", "🤏 拍拍"),
         )
         for index, (action_id, label) in enumerate(actions):
             button = QPushButton(label)
@@ -133,7 +137,7 @@ class PetStatusPanel(QDialog):
                     current_action
                 )
             )
-            action_grid.addWidget(button, index // 2, index % 2)
+            action_grid.addWidget(button, index // 3, index % 3)
 
         close_row = QHBoxLayout()
         close_row.addStretch(1)
