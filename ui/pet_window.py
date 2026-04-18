@@ -64,17 +64,13 @@ class PetWindow(QWidget):
         self.animation_backdrop.setStyleSheet(
             """
             QWidget {
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                    stop:0 rgba(255, 250, 252, 240),
-                    stop:1 rgba(255, 245, 248, 240));
-                border: 2px solid rgba(255, 207, 223, 200);
+                background: transparent;
+                border: none;
                 border-radius: 28px;
             }
             QWidget:hover {
-                border: 2px solid rgba(255, 180, 200, 220);
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                    stop:0 rgba(255, 252, 254, 245),
-                    stop:1 rgba(255, 248, 250, 245));
+                background: transparent;
+                border: none;
             }
             """
         )
@@ -128,6 +124,7 @@ class PetWindow(QWidget):
         self.mood_bar = self._build_status_row("心情", "#FF9A9E")
         self.energy_bar = self._build_status_row("精力", "#A1C4FD")
         self.cleanliness_bar = self._build_status_row("清洁", "#A8E6CF")
+        self.status_card.hide()
         self.main_layout.addWidget(self.status_card)
 
         self.dialog_bubble = DialogBubble()
@@ -367,18 +364,18 @@ class PetWindow(QWidget):
                     stop:0 rgba(255, 255, 255, 255),
                     stop:1 rgba(255, 253, 255, 255));
                 border: 1px solid #FFCFDF;
-                padding: 12px;
+                padding: 14px;
                 border-radius: 14px;
                 font-family: {ui_font_stack(include_emoji=True)};
             }}
             QMenu::item {{
-                padding: 12px 28px;
+                padding: 14px 32px;
                 border-radius: 10px;
                 color: #5A5A5A;
-                font-size: 15px;
-                margin: 4px 0px;
+                font-size: 18px;
+                margin: 5px 0px;
                 font-weight: 500;
-                min-width: 120px;
+                min-width: 140px;
             }}
             QMenu::item:selected {{
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
@@ -394,7 +391,7 @@ class PetWindow(QWidget):
                     stop:0 transparent,
                     stop:0.5 #FFE4E1,
                     stop:1 transparent);
-                margin: 10px 16px;
+                margin: 12px 18px;
             }}
             """
         )

@@ -1,6 +1,6 @@
 ﻿from __future__ import annotations
 
-from PySide6.QtCore import QSignalBlocker, QTimer, Qt, Signal
+from PySide6.QtCore import QPropertyAnimation, QSignalBlocker, QTimer, Qt, Signal
 from PySide6.QtWidgets import (
     QCheckBox,
     QDialog,
@@ -136,6 +136,8 @@ class SettingsWindow(QDialog):
 
         self.nav_list = QListWidget()
         self.nav_list.setFixedWidth(140)
+        self.nav_list.setSelectionMode(QListWidget.SingleSelection)
+        self.nav_list.setFocusPolicy(Qt.NoFocus)
         self.stacked_widget = QStackedWidget()
 
         main_layout = QHBoxLayout(self)
@@ -145,7 +147,8 @@ class SettingsWindow(QDialog):
         main_layout.addWidget(self.stacked_widget, 1)
 
         self._init_pages()
-        self.nav_list.currentRowChanged.connect(self.stacked_widget.setCurrentIndex)
+        self._current_index = 0
+        self.nav_list.currentRowChanged.connect(self._on_page_changed)
         self.nav_list.setCurrentRow(0)
 
     def _init_pages(self) -> None:
@@ -268,3 +271,34 @@ class SettingsWindow(QDialog):
         self._current_config.weather_enabled = self.weather_enabled.isChecked()
         self._current_config.auto_start = self.auto_start_enabled.isChecked()
         self.config_changed.emit(AppConfig.from_dict(self._current_config.to_dict()))
+
+    def _on_page_changed(self, index: int) -> None:
+        if index == self._current_index:
+            return
+        
+        current_widget = self.stacked_widget.currentWidget()
+        new_widget = self.stacked_widget.widget(index)
+        
+        if current_widget and new_widget:
+            opacity_anim = QPropertyAnimation(current_widget, b"windowOpacity")
+            opacity_anim.setDuration(150)
+            opacity_anim.setStartValue(1.0)
+            opacity_anim.setEndValue(0.0)
+            opacity_anim.finished.connect(lambda: self._switch_page(index))
+            opacity_anim.start()
+        else:
+            self._switch_page(index)
+    
+    def _switch_page(self, index: int) -> None:
+        self.stacked_widget.setCurrentIndex(index)
+        new_widget = self.stacked_widget.currentWidget()
+        
+        if new_widget:
+            new_widget.setWindowOpacity(0.0)
+            opacity_anim = QPropertyAnimation(new_widget, b"windowOpacity")
+            opacity_anim.setDuration(150)
+            opacity_anim.setStartValue(0.0)
+            opacity_anim.setEndValue(1.0)
+            opacity_anim.start()
+        
+        self._current_index = index
