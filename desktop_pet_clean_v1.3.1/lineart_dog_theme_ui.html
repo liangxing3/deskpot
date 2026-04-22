@@ -1,0 +1,400 @@
+
+<style>
+:root {
+  --cream: #FDF8F3;
+  --blush: #F2C4C4;
+  --blush2: #F8E0E0;
+  --rose: #D98C8C;
+  --rose-dark: #A85C5C;
+  --sage: #A8BFAA;
+  --sage-light: #E4EEE5;
+  --sage-dark: #5C7A5E;
+  --ink: #3A2E2E;
+  --ink2: #7A6060;
+  --ink3: #B09090;
+  --bg: var(--color-background-primary);
+  --bg2: var(--color-background-secondary);
+  --border: var(--color-border-tertiary);
+  --border2: var(--color-border-secondary);
+  --r: var(--border-radius-lg);
+  --r-xl: var(--border-radius-xl);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body, .root { font-family: var(--font-sans); }
+.root { padding: 1.5rem 0; color: var(--ink); font-size: 14px; }
+
+.tab-bar { display: flex; gap: 4px; margin-bottom: 1.25rem; background: var(--bg2); border-radius: var(--r); padding: 4px; border: 0.5px solid var(--border); }
+.tab { flex: 1; padding: 7px 8px; border-radius: calc(var(--r) - 2px); border: none; background: none; font-size: 12px; color: var(--ink2); cursor: pointer; transition: all 0.15s; text-align: center; }
+.tab.active { background: var(--bg); color: var(--ink); border: 0.5px solid var(--blush); font-weight: 500; }
+
+.panel { display: none; }
+.panel.active { display: block; animation: fadeUp 0.22s ease; }
+@keyframes fadeUp { from { opacity:0; transform: translateY(6px); } to { opacity:1; transform: none; } }
+
+/* Shell */
+.shell { background: var(--bg); border: 1px solid var(--blush); border-radius: 20px; max-width: 400px; margin: 0 auto; overflow: hidden; }
+.shell-header { display: flex; align-items: center; gap: 10px; padding: 13px 18px 12px; border-bottom: 0.5px solid var(--blush2); background: linear-gradient(to right, var(--blush2), var(--cream) 60%); }
+.shell-title { font-size: 14px; font-weight: 500; color: var(--ink); flex: 1; }
+.close-btn { width: 20px; height: 20px; border-radius: 50%; border: 0.5px solid var(--blush); background: var(--blush2); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 10px; color: var(--rose-dark); }
+.body { padding: 16px 18px; }
+
+/* Dog SVG mascot */
+.dog-wrap { display: flex; justify-content: center; margin-bottom: 14px; }
+
+/* Hero */
+.hero { margin-bottom: 14px; padding: 12px 14px; background: var(--blush2); border-radius: var(--r); border: 0.5px solid var(--blush); position: relative; overflow: hidden; }
+.hero::after { content:''; position:absolute; right:-14px; bottom:-14px; width:52px; height:52px; border-radius:50%; background:var(--blush); opacity:0.35; }
+.hero-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rose-dark); margin-bottom: 3px; }
+.hero-title { font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.4; margin-bottom: 2px; }
+.hero-sub { font-size: 12px; color: var(--ink2); line-height: 1.5; }
+
+/* Cards */
+.card { background: var(--bg); border: 0.5px solid var(--border2); border-radius: var(--r); padding: 13px 15px; margin-bottom: 10px; }
+.card-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink3); margin-bottom: 10px; }
+
+/* Row items */
+.ri { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; }
+.ri + .ri { border-top: 0.5px solid var(--border); }
+.ri-label { font-size: 13px; color: var(--ink2); }
+.ri-val { font-size: 13px; color: var(--ink); font-weight: 500; }
+
+/* Input */
+.inp { width: 100%; padding: 9px 12px; font-size: 13px; border: 0.5px solid var(--blush); border-radius: 10px; background: var(--bg); color: var(--ink); outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
+.inp:focus { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(217,140,140,0.15); }
+.inp-hint { font-size: 11px; color: var(--ink3); margin-top: 4px; }
+
+/* Tags */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 12px; }
+.tag { padding: 5px 11px; font-size: 12px; border: 0.5px solid var(--blush); border-radius: 20px; background: var(--blush2); color: var(--rose-dark); cursor: pointer; transition: all 0.12s; }
+.tag:hover { background: var(--blush); }
+
+/* Answer area */
+.ans-area { min-height: 76px; padding: 14px; border-radius: var(--r); border: 1px dashed var(--blush); background: var(--blush2); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.6; text-align: center; transition: all 0.25s; margin-top: 4px; }
+.ans-placeholder { font-size: 12px; font-weight: 400; color: var(--ink3); }
+
+/* Buttons */
+.btn-row { display: flex; gap: 7px; margin-top: 10px; }
+.btn { flex: 1; padding: 8px 10px; font-size: 12px; border: 0.5px solid var(--border2); border-radius: 10px; background: var(--bg); color: var(--ink2); cursor: pointer; transition: all 0.12s; }
+.btn:hover { background: var(--bg2); color: var(--ink); }
+.btn-rose { background: var(--blush2); border-color: var(--blush); color: var(--rose-dark); font-weight: 500; }
+.btn-rose:hover { background: var(--blush); }
+
+/* Toggle */
+.toggle { position: relative; width: 34px; height: 19px; cursor: pointer; flex-shrink: 0; }
+.toggle input { display: none; }
+.t-track { position: absolute; inset: 0; border-radius: 20px; background: var(--border2); border: 0.5px solid var(--border2); transition: background 0.2s, border-color 0.2s; }
+.toggle input:checked + .t-track { background: var(--rose); border-color: var(--rose); }
+.t-thumb { position: absolute; width: 13px; height: 13px; background: var(--bg); border-radius: 50%; top: 3px; left: 3px; transition: transform 0.2s; }
+.toggle input:checked ~ .t-thumb { transform: translateX(15px); }
+
+/* Seg */
+.seg { display: inline-flex; border: 0.5px solid var(--blush); border-radius: 10px; overflow: hidden; }
+.seg-btn { padding: 6px 14px; font-size: 12px; border: none; background: none; cursor: pointer; color: var(--ink2); transition: all 0.12s; }
+.seg-btn.on { background: var(--blush2); color: var(--rose-dark); font-weight: 500; }
+.seg-btn + .seg-btn { border-left: 0.5px solid var(--blush); }
+
+/* Paw decoration */
+.paw-row { display: flex; gap: 4px; align-items: center; margin-bottom: 10px; }
+
+/* Theme swatch */
+.sw-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+.sw-item { text-align: center; }
+.sw { width: 100%; aspect-ratio: 1; border-radius: 10px; border: 0.5px solid var(--border); margin-bottom: 4px; }
+.sw-name { font-size: 10px; color: var(--ink3); }
+.rule-block { padding: 10px 13px; border-radius: var(--r); border-left: 2px solid var(--rose); background: var(--blush2); margin-bottom: 8px; }
+.rule-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.rule-sub { font-size: 12px; color: var(--ink2); line-height: 1.55; }
+.chip { display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 500; background: var(--blush2); color: var(--rose-dark); border: 0.5px solid var(--blush); margin: 2px; }
+.chip-sage { background: var(--sage-light); color: var(--sage-dark); border-color: var(--sage); }
+
+.time-inp { width: 70px; padding: 7px 10px; font-size: 13px; border: 0.5px solid var(--blush); border-radius: 10px; background: var(--bg); color: var(--ink); outline: none; text-align: center; }
+.loc-row { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
+.loc-btn { padding: 8px 11px; font-size: 12px; border: 0.5px solid var(--blush); border-radius: 10px; background: var(--blush2); color: var(--rose-dark); cursor: pointer; white-space: nowrap; }
+</style>
+
+<div class="root" aria-label="线条小狗主题 UI 预览">
+<h2 class="sr-only">线条小狗主题桌宠应用 — 三个弹窗 + 主题色板的交互式预览</h2>
+
+<div class="tab-bar">
+  <button class="tab active" onclick="sw('answer')">答案之书</button>
+  <button class="tab" onclick="sw('weather')">天气设置</button>
+  <button class="tab" onclick="sw('settings')">整体设置</button>
+  <button class="tab" onclick="sw('theme')">主题色板</button>
+</div>
+
+<!-- 答案之书 -->
+<div id="p-answer" class="panel active">
+<div class="shell">
+  <div class="shell-header">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="26" height="26" rx="8" fill="#F8E0E0"/>
+      <!-- cute dog face line art -->
+      <ellipse cx="13" cy="14" rx="7" ry="6" stroke="#D98C8C" stroke-width="1.2" fill="none"/>
+      <ellipse cx="10.2" cy="8.8" rx="2.2" ry="3" stroke="#D98C8C" stroke-width="1.1" fill="none" transform="rotate(-10,10.2,8.8)"/>
+      <ellipse cx="15.8" cy="8.8" rx="2.2" ry="3" stroke="#D98C8C" stroke-width="1.1" fill="none" transform="rotate(10,15.8,8.8)"/>
+      <circle cx="11" cy="14" r="1" fill="#D98C8C"/>
+      <circle cx="15" cy="14" r="1" fill="#D98C8C"/>
+      <path d="M11 16.5 Q13 18 15 16.5" stroke="#D98C8C" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <circle cx="13" cy="15.2" r="1.3" fill="#F2C4C4" stroke="#D98C8C" stroke-width="0.8"/>
+    </svg>
+    <span class="shell-title">答案之书</span>
+    <div class="close-btn">✕</div>
+  </div>
+  <div class="body">
+    <div class="dog-wrap">
+      <!-- Large line-art dog mascot -->
+      <svg width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- body -->
+        <ellipse cx="50" cy="56" rx="22" ry="16" stroke="#D98C8C" stroke-width="1.4" fill="#F8E0E0"/>
+        <!-- head -->
+        <ellipse cx="50" cy="32" rx="17" ry="16" stroke="#D98C8C" stroke-width="1.4" fill="#FDF8F3"/>
+        <!-- left ear -->
+        <path d="M34 24 Q28 12 34 16" stroke="#D98C8C" stroke-width="1.4" fill="#F8E0E0" stroke-linejoin="round"/>
+        <!-- right ear -->
+        <path d="M66 24 Q72 12 66 16" stroke="#D98C8C" stroke-width="1.4" fill="#F8E0E0" stroke-linejoin="round"/>
+        <!-- eyes -->
+        <ellipse cx="44" cy="30" rx="2.5" ry="2.8" fill="#3A2E2E"/>
+        <ellipse cx="56" cy="30" rx="2.5" ry="2.8" fill="#3A2E2E"/>
+        <circle cx="45.2" cy="29" r="0.9" fill="white"/>
+        <circle cx="57.2" cy="29" r="0.9" fill="white"/>
+        <!-- nose -->
+        <ellipse cx="50" cy="36" rx="3" ry="2" fill="#D98C8C"/>
+        <!-- smile -->
+        <path d="M45 40 Q50 44 55 40" stroke="#D98C8C" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <!-- whiskers -->
+        <line x1="35" y1="36" x2="44" y2="37" stroke="#B09090" stroke-width="0.8"/>
+        <line x1="35" y1="38.5" x2="44" y2="38.5" stroke="#B09090" stroke-width="0.8"/>
+        <line x1="56" y1="37" x2="65" y2="36" stroke="#B09090" stroke-width="0.8"/>
+        <line x1="56" y1="38.5" x2="65" y2="38.5" stroke="#B09090" stroke-width="0.8"/>
+        <!-- front paws -->
+        <ellipse cx="38" cy="70" rx="7" ry="5" stroke="#D98C8C" stroke-width="1.2" fill="#FDF8F3"/>
+        <ellipse cx="62" cy="70" rx="7" ry="5" stroke="#D98C8C" stroke-width="1.2" fill="#FDF8F3"/>
+        <!-- tail -->
+        <path d="M72 55 Q82 46 78 40" stroke="#D98C8C" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <!-- heart decoration -->
+        <path d="M50 16 C50 16 48 13 46 14 C44 15 44.5 17.5 50 20 C55.5 17.5 56 15 54 14 C52 13 50 16 50 16Z" fill="#F2C4C4" stroke="#D98C8C" stroke-width="0.7"/>
+      </svg>
+    </div>
+    <div class="hero">
+      <div class="hero-eyebrow">每日一问</div>
+      <div class="hero-title">向宇宙提出你的问题 🌸</div>
+      <div class="hero-sub">小狗会帮你找到答案，它从不说谎。</div>
+    </div>
+    <div class="card">
+      <div class="card-label">你的问题</div>
+      <input id="q-in" class="inp" type="text" placeholder="我今天应该…？" />
+      <p class="inp-hint">支持 Ctrl+Enter 快速提交</p>
+      <div class="tags">
+        <span class="tag" onclick="fq('今天的我，状态如何？')">今天状态如何？</span>
+        <span class="tag" onclick="fq('我应该勇敢一点吗？')">应该勇敢吗？</span>
+      </div>
+      <div class="btn-row">
+        <button class="btn" onclick="rq()">随机</button>
+        <button class="btn" onclick="cq()">清空</button>
+        <button class="btn btn-rose" onclick="reveal()">翻开答案 ✨</button>
+      </div>
+    </div>
+    <div class="ans-area" id="ans"><span class="ans-placeholder">答案将在这里出现…</span></div>
+  </div>
+</div>
+</div>
+
+<!-- 天气设置 -->
+<div id="p-weather" class="panel">
+<div class="shell">
+  <div class="shell-header">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect width="26" height="26" rx="8" fill="#E4EEE5"/>
+      <circle cx="13" cy="11" r="4" stroke="#5C7A5E" stroke-width="1.2" fill="none"/>
+      <path d="M8 18 Q10 14 13 15 Q16 14 18 18" stroke="#5C7A5E" stroke-width="1.2" fill="#E4EEE5" stroke-linejoin="round"/>
+      <path d="M6 18 Q9 17 11 19" stroke="#A8BFAA" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <path d="M20 18 Q17 17 15 19" stroke="#A8BFAA" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+    </svg>
+    <span class="shell-title">天气设置</span>
+    <div class="close-btn">✕</div>
+  </div>
+  <div class="body">
+    <div class="hero" style="background:var(--sage-light); border-color:var(--sage);">
+      <div class="hero-eyebrow" style="color:var(--sage-dark);">位置与天气</div>
+      <div class="hero-title">配置你的天气偏好 ☁️</div>
+      <div class="hero-sub">小狗会在每天早上帮你播报天气，记得带伞哦。</div>
+    </div>
+    <div class="card">
+      <div class="card-label">位置</div>
+      <div class="loc-row">
+        <input class="inp" style="flex:1;margin-bottom:0;" type="text" placeholder="输入城市名称" value="北京" />
+        <button class="loc-btn">📍 定位</button>
+      </div>
+      <div class="ri">
+        <span class="ri-label">使用自动定位</span>
+        <label class="toggle"><input type="checkbox"/><div class="t-track"></div><div class="t-thumb"></div></label>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">显示偏好</div>
+      <div class="ri">
+        <span class="ri-label">温度单位</span>
+        <div class="seg">
+          <button class="seg-btn on" id="sc">摄氏 °C</button>
+          <button class="seg-btn" id="sf" onclick="togSeg()">华氏 °F</button>
+        </div>
+      </div>
+      <div class="ri">
+        <span class="ri-label">显示气泡</span>
+        <label class="toggle"><input type="checkbox" checked/><div class="t-track" style="background:var(--rose)"></div><div class="t-thumb"></div></label>
+      </div>
+      <div class="ri">
+        <span class="ri-label">播报时间</span>
+        <input class="time-inp" type="time" value="08:00"/>
+      </div>
+      <div class="ri">
+        <span class="ri-label">恶劣天气预警</span>
+        <label class="toggle"><input type="checkbox" checked/><div class="t-track" style="background:var(--rose)"></div><div class="t-thumb"></div></label>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 整体设置 -->
+<div id="p-settings" class="panel">
+<div class="shell">
+  <div class="shell-header">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect width="26" height="26" rx="8" fill="#F8E0E0"/>
+      <circle cx="13" cy="13" r="3.5" stroke="#D98C8C" stroke-width="1.2" fill="none"/>
+      <circle cx="13" cy="13" r="1.2" fill="#D98C8C"/>
+      <path d="M13 7 L13 5" stroke="#D98C8C" stroke-width="1.3" stroke-linecap="round"/>
+      <path d="M13 19 L13 21" stroke="#D98C8C" stroke-width="1.3" stroke-linecap="round"/>
+      <path d="M7 13 L5 13" stroke="#D98C8C" stroke-width="1.3" stroke-linecap="round"/>
+      <path d="M19 13 L21 13" stroke="#D98C8C" stroke-width="1.3" stroke-linecap="round"/>
+      <path d="M8.9 8.9 L7.5 7.5" stroke="#D98C8C" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M17.1 17.1 L18.5 18.5" stroke="#D98C8C" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M17.1 8.9 L18.5 7.5" stroke="#D98C8C" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M8.9 17.1 L7.5 18.5" stroke="#D98C8C" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+    <span class="shell-title">设置</span>
+    <div class="close-btn">✕</div>
+  </div>
+  <div class="body">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;padding:12px 14px;background:var(--blush2);border-radius:var(--r);border:0.5px solid var(--blush);">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+        <rect width="52" height="52" rx="14" fill="#FDF8F3" stroke="#F2C4C4" stroke-width="1"/>
+        <ellipse cx="26" cy="30" rx="13" ry="10" stroke="#D98C8C" stroke-width="1.3" fill="#F8E0E0"/>
+        <ellipse cx="26" cy="20" rx="11" ry="10" stroke="#D98C8C" stroke-width="1.3" fill="#FDF8F3"/>
+        <ellipse cx="17" cy="13" rx="4" ry="5.5" stroke="#D98C8C" stroke-width="1.2" fill="#F8E0E0" transform="rotate(-12,17,13)"/>
+        <ellipse cx="35" cy="13" rx="4" ry="5.5" stroke="#D98C8C" stroke-width="1.2" fill="#F8E0E0" transform="rotate(12,35,13)"/>
+        <ellipse cx="22" cy="20" rx="2" ry="2.2" fill="#3A2E2E"/>
+        <ellipse cx="30" cy="20" rx="2" ry="2.2" fill="#3A2E2E"/>
+        <circle cx="22.8" cy="19" r="0.7" fill="white"/>
+        <circle cx="30.8" cy="19" r="0.7" fill="white"/>
+        <ellipse cx="26" cy="24.5" rx="2.2" ry="1.5" fill="#D98C8C"/>
+        <path d="M22 27.5 Q26 31 30 27.5" stroke="#D98C8C" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+        <line x1="16" y1="24" x2="22" y2="25" stroke="#B09090" stroke-width="0.8"/>
+        <line x1="16" y1="26" x2="22" y2="26" stroke="#B09090" stroke-width="0.8"/>
+        <line x1="30" y1="25" x2="36" y2="24" stroke="#B09090" stroke-width="0.8"/>
+        <line x1="30" y1="26" x2="36" y2="26" stroke="#B09090" stroke-width="0.8"/>
+      </svg>
+      <div>
+        <div style="font-size:15px;font-weight:500;color:var(--ink);" id="pet-display">小橘</div>
+        <div style="font-size:12px;color:var(--ink2);margin-top:2px;">你的专属桌宠 🐾</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">基本信息</div>
+      <div class="ri">
+        <span class="ri-label">宠物名称</span>
+        <input class="inp" type="text" value="小橘" style="width:100px;margin-bottom:0;" oninput="document.getElementById('pet-display').textContent=this.value||'小狗'"/>
+      </div>
+      <div class="ri">
+        <span class="ri-label">开机启动</span>
+        <label class="toggle"><input type="checkbox" checked/><div class="t-track" style="background:var(--rose)"></div><div class="t-thumb"></div></label>
+      </div>
+      <div class="ri">
+        <span class="ri-label">天气设置</span>
+        <button class="btn" style="flex:0;padding:5px 12px;" onclick="sw('weather')">前往 →</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">提醒与互动</div>
+      <div class="ri"><span class="ri-label">喝水提醒 💧</span><label class="toggle"><input type="checkbox" checked/><div class="t-track" style="background:var(--rose)"></div><div class="t-thumb"></div></label></div>
+      <div class="ri"><span class="ri-label">久坐提醒 🧘</span><label class="toggle"><input type="checkbox"/><div class="t-track"></div><div class="t-thumb"></div></label></div>
+      <div class="ri"><span class="ri-label">整点报时 🔔</span><label class="toggle"><input type="checkbox" checked/><div class="t-track" style="background:var(--rose)"></div><div class="t-thumb"></div></label></div>
+      <div class="ri"><span class="ri-label">随机对话 💬</span><label class="toggle"><input type="checkbox" checked/><div class="t-track" style="background:var(--rose)"></div><div class="t-thumb"></div></label></div>
+    </div>
+    <div class="card">
+      <div class="card-label">字体大小</div>
+      <div class="seg" style="width:100%">
+        <button class="seg-btn" id="fs" onclick="selF('s')" style="flex:1">小</button>
+        <button class="seg-btn on" id="fm" onclick="selF('m')" style="flex:1">中</button>
+        <button class="seg-btn" id="fl" onclick="selF('l')" style="flex:1">大</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 主题色板 -->
+<div id="p-theme" class="panel">
+  <div class="sw-grid">
+    <div class="sw-item"><div class="sw" style="background:#FDF8F3; border-color:#F2C4C4;"></div><div class="sw-name">奶白底色</div></div>
+    <div class="sw-item"><div class="sw" style="background:#F8E0E0;"></div><div class="sw-name">浅玫背景</div></div>
+    <div class="sw-item"><div class="sw" style="background:#F2C4C4;"></div><div class="sw-name">玫瑰粉</div></div>
+    <div class="sw-item"><div class="sw" style="background:#D98C8C;"></div><div class="sw-name">玫瑰深</div></div>
+    <div class="sw-item"><div class="sw" style="background:#A85C5C;"></div><div class="sw-name">玫瑰墨</div></div>
+    <div class="sw-item"><div class="sw" style="background:#E4EEE5;"></div><div class="sw-name">嫩草背景</div></div>
+    <div class="sw-item"><div class="sw" style="background:#A8BFAA;"></div><div class="sw-name">鼠尾草</div></div>
+    <div class="sw-item"><div class="sw" style="background:#5C7A5E;"></div><div class="sw-name">深草绿</div></div>
+  </div>
+  <div class="rule-block">
+    <div class="rule-title">DialogShell 规范</div>
+    <div class="rule-sub">border: 1px solid blush · border-radius: 20px · header 渐变底 · parent=None</div>
+  </div>
+  <div class="rule-block">
+    <div class="rule-title">组件语言</div>
+    <div style="margin-top:6px;">
+      <span class="chip">圆角 10px 输入框</span>
+      <span class="chip">玫瑰焦点光晕</span>
+      <span class="chip chip-sage">草绿 toggle</span>
+      <span class="chip">虚线答案框</span>
+      <span class="chip chip-sage">sage Hero 区块</span>
+      <span class="chip">浅blush 标签</span>
+    </div>
+  </div>
+  <div class="rule-block">
+    <div class="rule-title">小狗线稿风格</div>
+    <div class="rule-sub">stroke: #D98C8C · stroke-width: 1.2–1.4 · fill: #FDF8F3 / #F8E0E0 · 耳朵 + 爪子 + 胡须 + 爱心头饰</div>
+  </div>
+</div>
+
+<script>
+function sw(n){
+  ['answer','weather','settings','theme'].forEach(k=>{
+    document.getElementById('p-'+k).classList.toggle('active',k===n);
+  });
+  document.querySelectorAll('.tab').forEach((t,i)=>{
+    t.classList.toggle('active',['answer','weather','settings','theme'][i]===n);
+  });
+}
+var answers=['一切都会好的。','勇敢去做，小狗支持你 🐾','今天是好日子，放心前行。','先休息一下，再出发。','你已经做得很好了。','顺其自然，你不需要想那么多。','答案就在你心里，听从内心。','给自己一个大大的拥抱 🌸'];
+function reveal(){
+  var q=document.getElementById('q-in').value.trim();
+  var a=document.getElementById('ans');
+  if(!q){a.innerHTML='<span class="ans-placeholder">请先写下你的问题…🐾</span>';return;}
+  a.style.opacity=0;
+  setTimeout(()=>{
+    a.innerHTML='<span style="font-size:15px;font-weight:500;color:var(--ink);">'+answers[Math.floor(Math.random()*answers.length)]+'</span>';
+    a.style.transition='opacity 0.3s';a.style.opacity=1;
+  },200);
+}
+var qs=['今天我会遇到好事吗？','应该勇敢迈出第一步吗？','今天的我，状态如何？','我在走正确的路吗？'];
+function rq(){document.getElementById('q-in').value=qs[Math.floor(Math.random()*qs.length)];}
+function cq(){document.getElementById('q-in').value='';document.getElementById('ans').innerHTML='<span class="ans-placeholder">答案将在这里出现…</span>';}
+function fq(t){document.getElementById('q-in').value=t;}
+document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.key==='Enter')reveal();});
+var segC=true;
+function togSeg(){
+  segC=!segC;
+  document.getElementById('sc').classList.toggle('on',segC);
+  document.getElementById('sf').classList.toggle('on',!segC);
+}
+function selF(v){['s','m','l'].forEach(k=>document.getElementById('f'+k).classList.toggle('on',k===v));}
+</script>
