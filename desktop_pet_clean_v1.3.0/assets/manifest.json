@@ -1,0 +1,386 @@
+﻿{
+  "animations": [
+    {
+      "id": "idle_001",
+      "state": "IDLE",
+      "path": "assets/GIF/normal.gif",
+      "weight": 4,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "idle_020",
+      "state": "IDLE",
+      "path": "assets/GIF/normal2.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_normal_001",
+      "emotion_state": "NORMAL",
+      "path": "assets/GIF/normal.gif",
+      "weight": 4,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_normal_020",
+      "emotion_state": "NORMAL",
+      "path": "assets/GIF/normal2.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_normal_036",
+      "emotion_state": "NORMAL",
+      "path": "assets/GIF/baji.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 4500
+    },
+    {
+      "id": "emotion_working_060",
+      "emotion_state": "WORKING",
+      "path": "assets/GIF/working.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_working_071",
+      "emotion_state": "WORKING",
+      "path": "assets/GIF/working2.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_low_energy_084",
+      "emotion_state": "LOW_ENERGY",
+      "path": "assets/GIF/crying.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_tired_084",
+      "emotion_state": "TIRED",
+      "path": "assets/GIF/crying.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_low_energy_118",
+      "emotion_state": "LOW_ENERGY",
+      "path": "assets/GIF/crying2.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_tired_118",
+      "emotion_state": "TIRED",
+      "path": "assets/GIF/crying2.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_low_happiness_089",
+      "emotion_state": "LOW_HAPPINESS",
+      "path": "assets/GIF/hungry.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_hungry_089",
+      "emotion_state": "HUNGRY",
+      "path": "assets/GIF/hungry.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_low_happiness_093",
+      "emotion_state": "LOW_HAPPINESS",
+      "path": "assets/GIF/angry.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_drained_121",
+      "emotion_state": "DRAINED",
+      "path": "assets/GIF/exercise.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5500
+    },
+    {
+      "id": "emotion_drained_124",
+      "emotion_state": "DRAINED",
+      "path": "assets/GIF/stick.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5500
+    },
+    {
+      "id": "emotion_dirty_121",
+      "emotion_state": "DIRTY",
+      "path": "assets/GIF/exercise.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5500
+    },
+    {
+      "id": "emotion_dirty_124",
+      "emotion_state": "DIRTY",
+      "path": "assets/GIF/stick.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5500
+    },
+    {
+      "id": "emotion_bored_024",
+      "emotion_state": "BORED",
+      "path": "assets/GIF/boring.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "emotion_bored_044",
+      "emotion_state": "BORED",
+      "path": "assets/GIF/baji2.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "random_044",
+      "state": "RANDOM_ANIMATING",
+      "path": "assets/GIF/baji2.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "random_071",
+      "state": "RANDOM_ANIMATING",
+      "path": "assets/GIF/working2.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "interact_099",
+      "state": "INTERACTING",
+      "path": "assets/GIF/call.gif",
+      "weight": 3,
+      "loop": true,
+      "min_duration_ms": 3500
+    },
+    {
+      "id": "interact_100",
+      "state": "INTERACTING",
+      "path": "assets/GIF/full.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 3500
+    },
+    {
+      "id": "manual_petting",
+      "state": "MANUAL_ACTION",
+      "variant": "petting",
+      "path": "assets/GIF/call.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "manual_pat",
+      "state": "MANUAL_ACTION",
+      "variant": "pat",
+      "path": "assets/GIF/call.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 3000
+    },
+    {
+      "id": "manual_exercise",
+      "state": "MANUAL_ACTION",
+      "variant": "exercise",
+      "path": "assets/GIF/walkdog.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 7000
+    },
+    {
+      "id": "manual_charge",
+      "state": "MANUAL_ACTION",
+      "variant": "charge",
+      "path": "assets/GIF/charge.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 8000
+    },
+    {
+      "id": "manual_feed",
+      "state": "MANUAL_ACTION",
+      "variant": "feed",
+      "path": "assets/GIF/cake.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "manual_play",
+      "state": "MANUAL_ACTION",
+      "variant": "play",
+      "path": "assets/GIF/full.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 6000
+    },
+    {
+      "id": "manual_clean",
+      "state": "MANUAL_ACTION",
+      "variant": "clean",
+      "path": "assets/GIF/call.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5500
+    },
+    {
+      "id": "manual_rest",
+      "state": "MANUAL_ACTION",
+      "variant": "rest",
+      "path": "assets/GIF/crying2.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 7000
+    },
+    {
+      "id": "manual_baji",
+      "state": "MANUAL_ACTION",
+      "variant": "baji",
+      "path": "assets/GIF/baji.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "manual_feather_ball",
+      "state": "MANUAL_ACTION",
+      "variant": "feather_ball",
+      "path": "assets/GIF/full.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "manual_appear",
+      "state": "MANUAL_ACTION",
+      "variant": "appear",
+      "path": "assets/GIF/appear.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 3500
+    },
+    {
+      "id": "manual_walkdog",
+      "state": "MANUAL_ACTION",
+      "variant": "walkdog",
+      "path": "assets/GIF/full.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 7000
+    },
+    {
+      "id": "drink_121",
+      "state": "REMINDING_DRINK",
+      "path": "assets/GIF/exercise.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "drink_122",
+      "state": "REMINDING_DRINK",
+      "path": "assets/GIF/stick.gif",
+      "weight": 1,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "sedentary_153",
+      "state": "REMINDING_SEDENTARY",
+      "path": "assets/GIF/full.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "sedentary_158",
+      "state": "REMINDING_SEDENTARY",
+      "path": "assets/GIF/full.gif",
+      "weight": 1,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "time_130",
+      "state": "TIME_REPORTING",
+      "path": "assets/GIF/clock.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "time_132",
+      "state": "TIME_REPORTING",
+      "path": "assets/GIF/clock.gif",
+      "weight": 1,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "weather_168",
+      "state": "WEATHER_SHOWING",
+      "path": "assets/GIF/normal.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "weather_169",
+      "state": "WEATHER_SHOWING",
+      "path": "assets/GIF/normal2.gif",
+      "weight": 1,
+      "loop": true,
+      "min_duration_ms": 4000
+    },
+    {
+      "id": "growing_146",
+      "state": "GROWING",
+      "variant": "growing",
+      "path": "assets/GIF/cake.gif",
+      "weight": 2,
+      "loop": true,
+      "min_duration_ms": 5000
+    },
+    {
+      "id": "growing_149",
+      "state": "GROWING",
+      "variant": "growing",
+      "path": "assets/GIF/full.gif",
+      "weight": 1,
+      "loop": true,
+      "min_duration_ms": 5000
+    }
+  ]
+}
